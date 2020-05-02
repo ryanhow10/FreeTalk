@@ -2,13 +2,16 @@ package com.example.freeTalk.api;
 
 import com.example.freeTalk.models.Post;
 import com.example.freeTalk.repositories.PostRepository;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("posts")
 @RestController
@@ -33,7 +36,10 @@ public class PostController {
     //POST /posts
     @PostMapping
     public void addPost(@Valid @NonNull @RequestBody Post post) {
-        this.postRepository.insert(new Post(post.getUsername(), post.getContent(), post.getHashtags(), 0, 0, 0, new Date()));
+        this.postRepository.insert(new Post(UUID.randomUUID().toString(), post.getUsername(), post.getContent(), post.getHashtags(), 0, 0, 0, new Date()));
     }
 
+
+//    @PutMapping(path = "{id}")
+//    public void updatePost(@Valid @NonNull @RequestBody Post )
 }

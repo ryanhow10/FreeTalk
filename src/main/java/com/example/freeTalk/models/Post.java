@@ -1,11 +1,16 @@
 package com.example.freeTalk.models;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.UUID;
 
 @Document(collection = "Posts")
 public class Post {
+
+    @Id
+    private final String postId;
 
     @NotBlank
     private final String username;
@@ -21,7 +26,8 @@ public class Post {
     private final int reports;
     private final Date createdOn;
 
-    public Post(String username, String content, String[] hashtags, int likes, int dislikes, int reports, Date createdOn) {
+    public Post(String postId, String username, String content, String[] hashtags, int likes, int dislikes, int reports, Date createdOn) {
+        this.postId = postId;
         this.username = username;
         this.content = content;
         this.hashtags = hashtags;
@@ -29,6 +35,10 @@ public class Post {
         this.dislikes = dislikes;
         this.reports = reports;
         this.createdOn = createdOn;
+    }
+
+    public String getPostId() {
+        return postId;
     }
 
     public String getUsername() {
