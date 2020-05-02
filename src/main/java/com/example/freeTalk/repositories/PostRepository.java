@@ -10,5 +10,5 @@ import java.util.UUID;
 public interface PostRepository extends MongoRepository<Post, MongoId> {
 
     List<Post> findPostsByContentContains(String search);
-
+    Post findFirstByPostId(String postId);
 }

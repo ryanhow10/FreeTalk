@@ -2,7 +2,6 @@ package com.example.freeTalk.api;
 
 import com.example.freeTalk.models.Post;
 import com.example.freeTalk.repositories.PostRepository;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.lang.NonNull;
@@ -39,7 +38,17 @@ public class PostController {
         this.postRepository.insert(new Post(UUID.randomUUID().toString(), post.getUsername(), post.getContent(), post.getHashtags(), 0, 0, 0, new Date()));
     }
 
+    //PUT /posts/:postId
+    @PutMapping(path = "{postId}")
+    public void updatePost(@PathVariable("postId") String postId, @Valid @NonNull @RequestBody Post newPost){
+        Post post = this.postRepository.findFirstByPostId(postId);
+        if(newPost.getReports() >= 3){
+            this.postRepository.delete(post);
+        } else {
+            post = new Post(post.getPostId(), post.getUsername(), post.getContent(), post.getHashtags(), newPost.getLikes(), newPost.getDislikes(), newPost.getDislikes(), post.getCreatedOn());
+            this.postRepository.save(post);
+        }
+    }
 
-//    @PutMapping(path = "{id}")
-//    public void updatePost(@Valid @NonNull @RequestBody Post )
+
 }
