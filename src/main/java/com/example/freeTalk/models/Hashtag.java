@@ -1,8 +1,5 @@
 package com.example.freeTalk.models;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import javax.validation.constraints.NotBlank;
 
 @Document(collection = "Hashtags")

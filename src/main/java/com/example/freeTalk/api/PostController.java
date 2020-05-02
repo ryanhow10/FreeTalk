@@ -2,6 +2,7 @@ package com.example.freeTalk.api;
 
 import com.example.freeTalk.models.Post;
 import com.example.freeTalk.repositories.PostRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class PostController {
     @GetMapping
     public List<Post> getPosts(@RequestParam(required = false) String search){
         if(search == null || search.length() == 0){
-            return this.postRepository.findAll();
+            return this.postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdOn"));
         } else {
             return this.postRepository.findPostsByContentContains(search);
         }
