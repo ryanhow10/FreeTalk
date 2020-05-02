@@ -32,6 +32,12 @@ public class PostController {
         }
     }
 
+    //GET /posts/hashtags/:hashtag
+    @GetMapping(path = "/hashtags/{hashtag}")
+    public List<Post> getPostsByHashtag(@PathVariable("hashtag") String hashtag) {
+        return this.postRepository.findPostsByHashtagsContains(hashtag);
+    }
+
     //POST /posts
     @PostMapping
     public void addPost(@Valid @NonNull @RequestBody Post post) {
@@ -49,6 +55,4 @@ public class PostController {
             this.postRepository.save(post);
         }
     }
-
-
 }
