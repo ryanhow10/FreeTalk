@@ -3,11 +3,12 @@ package com.example.freeTalk.api;
 import com.example.freeTalk.models.Hashtag;
 import com.example.freeTalk.repositories.HashtagRepository;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("hashtags")
 @RestController
@@ -25,5 +26,15 @@ public class HashtagController {
         return this.hashtagRepository.findAll(Sort.by(Sort.Direction.DESC, "count"));
     }
 
-
+    //POST /hashtags
+    @PostMapping
+    public void addHashtag(@Valid @NonNull @RequestBody Hashtag newHashtag) {
+        Hashtag hashtag = this.hashtagRepository.findHashtagByName(newHashtag.getName());
+        if(hashtag == null) {
+            this.hashtagRepository.insert(new Hashtag(UUID.randomUUID().toString(), newHashtag.getName(), 1));
+        } else{
+            hashtag = new Hashtag(hashtag.getHashtagId(), hashtag.getName(), newHashtag.getCount());
+            this.hashtagRepository.save(hashtag);
+        }
+    }
 }
