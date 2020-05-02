@@ -1,17 +1,15 @@
 package com.example.freeTalk.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.boot.jackson.JsonComponent;
-import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Repository;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.UUID;
 
+@Document(collection = "Posts")
 public class Post {
-    @Id
-    private final UUID postId;
 
     @NotBlank
     private final String username;
@@ -27,15 +25,7 @@ public class Post {
     private final int reports;
     private final Date createdOn;
 
-    public Post(UUID postId,
-                @JsonProperty("username") String username,
-                @JsonProperty("content") String content,
-                @JsonProperty("hashtags") String[] hashtags,
-                @JsonProperty("likes") int likes,
-                @JsonProperty("likes") int dislikes,
-                @JsonProperty("reports") int reports,
-                Date createdOn) {
-        this.postId = postId;
+    public Post(String username, String content, String[] hashtags, int likes, int dislikes, int reports, Date createdOn) {
         this.username = username;
         this.content = content;
         this.hashtags = hashtags;
@@ -43,10 +33,6 @@ public class Post {
         this.dislikes = dislikes;
         this.reports = reports;
         this.createdOn = createdOn;
-    }
-
-    public UUID getPostId() {
-        return postId;
     }
 
     public String getUsername() {
