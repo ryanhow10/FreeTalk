@@ -11,10 +11,16 @@ export class PostsService {
 
   constructor(private http:HttpClient) { }
 
+  getPosts(search:string):Observable<Post> {
+    if(search.length == 0){
+      return this.http.get<Post>(this.url);
+    } else {
+      console.log("here");
+      return this.http.get<Post>(this.url + "?search=" + search);
+    }
+  }
+
   addPost(username:string, content:string, hashtags:string[]):Observable<Post> {
-    console.log(username);
-    console.log(content);
-    console.log(hashtags);
     return this.http.post<Post>(this.url, {
       "username": username,
       "content": content,

@@ -9,6 +9,7 @@
 
 #homeHeader {
   border: 0.05em solid #F0F0F0;
+  border-right: none;
 }
 
 .centered {
@@ -31,5 +32,37 @@
 .blueButton:hover {
   background: #270949;
 }
+
+#rightBar {
+  border-left: 0.05em solid #F0F0F0;
+}
+
+.rounded {
+  border-radius: 25px !important;
+}
+
+.roundedLeft {
+  border-bottom-left-radius: 25px !important;
+  border-top-left-radius: 25px !important;
+}
+
+.roundedRight {
+  border-bottom-right-radius: 25px !important;
+  border-top-right-radius: 25px !important;
+}
+
+#searchBar {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#popularHashtags {
+  color: #270949;
+}
+
+
+
+
+
 
 
