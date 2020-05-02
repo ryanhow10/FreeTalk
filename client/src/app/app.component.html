@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8" id="homeHeader">
+      <div class="row" class="centered">
+        <img *ngIf="!smallScreen" src="../assets/FreeTalkLogo.png" id="homeLogo">
+        <img *ngIf="smallScreen" src="../assets/FreeTalkMobileLogo.png" id="homeLogoMobile">
+      </div>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="input-group mb-3 col-6 centered">
+          <input type="text" class="form-control" placeholder="What's on your mind?" [(ngModel)]="content">
+          <div class="input-group-append">
+            <button class="btn blueButton" type="button" (click)="addPost()">Post</button>
+          </div>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+</div>

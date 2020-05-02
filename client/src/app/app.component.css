@@ -1,0 +1,35 @@
+* {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.container {
+  min-width: 100%;
+  background: white;
+}
+
+#homeHeader {
+  border: 0.05em solid #F0F0F0;
+}
+
+.centered {
+  text-align: center;
+}
+
+#homeLogo {
+  width: 400px;
+}
+
+#homeLogoMobile {
+  width: 200px;
+}
+
+.blueButton {
+  background: #4654A3;
+  color: white;
+}
+
+.blueButton:hover {
+  background: #270949;
+}
+
+
