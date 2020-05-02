@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostsService } from './services/posts.service';
 // @ts-ignore
 import { animals } from '../assets/animals.json';
@@ -19,7 +19,7 @@ export class AppComponent {
   constructor(private postsService:PostsService) {
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     if(window.screen.width < 768){
       this.smallScreen = true;
     }

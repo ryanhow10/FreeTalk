@@ -1,1 +1,6 @@
-<p>hashtags works!</p>
+<div id="hashtags">
+  <h4 id="popularHashtags">Popular Hashtags</h4>
+  <div class="row-fluid" *ngFor="let hashtag of hashtags.slice(0,5)">
+    <app-hashtag [hashtag]="hashtag.name" [count]="hashtag.count"></app-hashtag>
+  </div>
+</div>

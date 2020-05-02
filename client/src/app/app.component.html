@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-3"></div>
         <div class="input-group mb-3 col-6 centered">
-          <input type="text" class="form-control roundedLeft" placeholder="What's on your mind?" [(ngModel)]="content" (click)="addPost()">
+          <input type="text" class="form-control roundedLeft" placeholder="What's on your mind?" [(ngModel)]="content" (enter)="addPost()">
           <div class="input-group-append">
             <button class="btn blueButton roundedRight" type="button" (click)="addPost()">Post</button>
           </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-4" id="rightBar">
       <input type="text" placeholder="Search FreeTalk" class="form-control rounded" id="searchBar" (keyup.enter)="getPosts()" [(ngModel)]="search">
-
+      <app-hashtags></app-hashtags>
     </div>
   </div>
 </div>

@@ -6,11 +6,13 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HashtagsComponent } from './components/hashtags/hashtags.component';
+import { HashtagComponent } from './components/hashtag/hashtag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HashtagsComponent
+    HashtagsComponent,
+    HashtagComponent
   ],
   imports: [
     BrowserModule,
