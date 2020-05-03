@@ -24,7 +24,7 @@ public class HashtagController {
     //GET /hashtags
     @GetMapping
     public List<Hashtag> getHashtags() {
-        return this.hashtagRepository.findAll(Sort.by(Sort.Direction.DESC, "count"));
+        return this.hashtagRepository.findAllByOrderByCountDesc();
     }
 
     //POST /hashtags
@@ -34,7 +34,7 @@ public class HashtagController {
         if(hashtag == null) {
             this.hashtagRepository.insert(new Hashtag(UUID.randomUUID().toString(), newHashtag.getName(), 1));
         } else{
-            hashtag = new Hashtag(hashtag.getHashtagId(), hashtag.getName(), newHashtag.getCount());
+            hashtag = new Hashtag(hashtag.getHashtagId(), hashtag.getName(), hashtag.getCount() + 1);
             this.hashtagRepository.save(hashtag);
         }
     }

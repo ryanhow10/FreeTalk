@@ -3,7 +3,6 @@ package com.example.freeTalk.api;
 import com.example.freeTalk.models.Post;
 import com.example.freeTalk.repositories.PostRepository;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
