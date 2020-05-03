@@ -1,0 +1,18 @@
+<div id="post">
+  <div class="row">
+    <div class="col-1">
+      <img src="../../../assets/avatar-1.png" id="avatar">
+    </div>
+    <div class="col-11">
+      <div class="row">
+        <h5>{{ post.username }}</h5>
+        <p>&ensp;•&ensp;{{ post.createdOn | date: "short"}}</p>
+      </div>
+      <div class="row" id="content">{{ post.content }}</div>
+      <div class="row" id="interact">
+
+      </div>
+    </div>
+  </div>
+</div>
+
