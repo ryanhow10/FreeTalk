@@ -3,6 +3,9 @@ import { HttpClient } from "@angular/common/http";
 import { Post } from '../models/Post';
 import { Observable } from "rxjs";
 
+class List<T> {
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +14,7 @@ export class PostsService {
 
   constructor(private http:HttpClient) { }
 
-  getPosts(search:string) {
+  getPosts(search:string):Observable<Post[]> {
     if(search.length == 0){
       return this.http.get<Post[]>(this.url);
     } else {
@@ -26,4 +29,16 @@ export class PostsService {
       "hashtags": hashtags,
     });
   }
+
+  updatePost(post:Post):Observable<Post> {
+    return this.http.put<Post>(this.url + "/" + post.postId, {
+      "username": post.username,
+      "content": post.content,
+      "hashtags": post.hashtags,
+      "likes": post.likes,
+      "dislikes": post.dislikes,
+      "reports": post.reports
+    });
+  }
+
 }

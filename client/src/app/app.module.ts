@@ -9,6 +9,7 @@ import { HashtagsComponent } from './components/hashtags/hashtags.component';
 import { HashtagComponent } from './components/hashtag/hashtag.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
+import { InteractComponent } from './components/interact/interact.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PostComponent } from './components/post/post.component';
     HashtagsComponent,
     HashtagComponent,
     PostsComponent,
-    PostComponent
+    PostComponent,
+    InteractComponent
   ],
   imports: [
     BrowserModule,

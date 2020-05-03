@@ -1,0 +1,17 @@
+.center {
+  text-align: center;
+}
+
+.edit {
+  color: #A0A0A0;
+  margin: 1em;
+}
+
+.edit:hover {
+  color: #4654A3;
+}
+
+#interact {
+  display: inline-block;
+}
+

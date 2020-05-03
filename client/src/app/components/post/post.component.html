@@ -3,7 +3,7 @@
     <div class="col-1">
       <img src="../../../assets/avatar-1.png" id="avatar">
     </div>
-    <div class="col-11">
+    <div class="col-10">
       <div class="row">
         <p class="bold">{{ post.username }}</p>
 <!--        <p class="time">&ensp;•&ensp;{{ post.createdOn | date: "short"}}</p>-->
@@ -13,8 +13,10 @@
         <p class="time">&ensp;{{ timeElapsedMinutes }}m</p>
       </div>
       <div class="row" id="content">{{ post.content }}</div>
+    </div>
+    <div class="col-1">
       <div class="row" id="interact">
-
+        <app-interact [post]="post"></app-interact>
       </div>
     </div>
   </div>

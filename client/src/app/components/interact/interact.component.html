@@ -1,0 +1,11 @@
+<div id="interact">
+  <div>
+    <i class="fa fa-thumbs-up edit like" (click)="addLike()"></i>{{ post.likes }}
+  </div>
+  <div>
+    <i class="fa fa-thumbs-down edit dislike" (click)="addDislike()"></i>{{ post.dislikes }}
+  </div>
+  <div>
+    <i class="fa fa-flag edit report" (click)="addReport()"></i>{{ post.reports }}
+  </div>
+</div>
