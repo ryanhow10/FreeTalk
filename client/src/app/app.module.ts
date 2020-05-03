@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HashtagsComponent } from './components/hashtags/hashtags.component';
 import { HashtagComponent } from './components/hashtag/hashtag.component';
+import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { PostComponent } from './components/post/post.component';
     AppComponent,
     HashtagsComponent,
     HashtagComponent,
+    PostsComponent,
     PostComponent
   ],
   imports: [

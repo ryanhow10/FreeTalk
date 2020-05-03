@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Post } from '../models/Post';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +11,11 @@ export class PostsService {
 
   constructor(private http:HttpClient) { }
 
-  getPosts(search:string):Observable<Post> {
+  getPosts(search:string) {
     if(search.length == 0){
-      return this.http.get<Post>(this.url);
+      return this.http.get<Post[]>(this.url);
     } else {
-      console.log("here");
-      return this.http.get<Post>(this.url + "?search=" + search);
+      return this.http.get<Post[]>(this.url + "?search=" + search);
     }
   }
 

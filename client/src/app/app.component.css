@@ -7,10 +7,8 @@
   background: white;
 }
 
-#homeHeader {
-  border: 0.05em solid #F0F0F0;
-  border-right: none;
-  border-top: none;
+#border {
+  border-bottom: 0.05em solid #F0F0F0;
 }
 
 .centered {
@@ -57,10 +55,15 @@
   margin-bottom: 2em;
 }
 
+.stick {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: white;
+}
 
-
-
-
-
-
-
+.rightStick {
+  position: sticky;
+  right: 0;
+  top: 0;
+}

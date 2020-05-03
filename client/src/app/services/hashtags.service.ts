@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Hashtag } from '../models/Hashtag';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +13,11 @@ export class HashtagsService {
 
   getHashtags():Observable<Hashtag[]> {
     return this.http.get<Hashtag[]>(this.url);
+  }
+
+  addHashtag(name:string):Observable<Hashtag> {
+    return this.http.post<Hashtag>(this.url, {
+      "name": name
+    });
   }
 }
