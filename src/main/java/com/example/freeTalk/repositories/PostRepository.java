@@ -1,5 +1,4 @@
 package com.example.freeTalk.repositories;
-
 import com.example.freeTalk.models.Post;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 import org.springframework.data.mongodb.repository.MongoRepository;

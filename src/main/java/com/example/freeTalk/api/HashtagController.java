@@ -1,11 +1,8 @@
 package com.example.freeTalk.api;
-
 import com.example.freeTalk.models.Hashtag;
 import com.example.freeTalk.repositories.HashtagRepository;
-import org.springframework.data.domain.Sort;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;

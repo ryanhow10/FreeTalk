@@ -10,3 +10,14 @@
   border-radius: 50%;
   border: 0.05em solid #4654A3;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.time {
+  color: #A9A9A9;
+}
+
+
+

@@ -5,8 +5,12 @@
     </div>
     <div class="col-11">
       <div class="row">
-        <h5>{{ post.username }}</h5>
-        <p>&ensp;•&ensp;{{ post.createdOn | date: "short"}}</p>
+        <p class="bold">{{ post.username }}</p>
+<!--        <p class="time">&ensp;•&ensp;{{ post.createdOn | date: "short"}}</p>-->
+        <p class="time">&ensp;•</p>
+        <p class="time" *ngIf="timeElapsedDays >= 1">&ensp;{{ timeElapsedDays }}d</p>
+        <p class="time" *ngIf="timeElapsedHours >= 1">&ensp;{{ timeElapsedHours }}h</p>
+        <p class="time">&ensp;{{ timeElapsedMinutes }}m</p>
       </div>
       <div class="row" id="content">{{ post.content }}</div>
       <div class="row" id="interact">
