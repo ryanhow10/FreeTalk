@@ -1,0 +1,31 @@
+#error {
+  margin: 1em;
+}
+
+.centered {
+  text-align: center;
+}
+
+.sadness {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#backToHome {
+  color: #4654A3;
+  margin-right: 0.5em;
+}
+
+#backToHome:hover {
+  color: #270949;
+  cursor: pointer;
+}
+
+.spaceRight {
+  margin-right: 0.5em;
+}
+
+a {
+  text-decoration: none;
+}
