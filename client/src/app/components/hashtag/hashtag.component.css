@@ -11,3 +11,8 @@
 #name:hover {
   color: #4654A3;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}

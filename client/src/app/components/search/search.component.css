@@ -1,0 +1,14 @@
+#results {
+  margin: 1em;
+  border-bottom: 0.05em solid #F0F0F0;
+}
+
+#backToHome {
+  color: #4654A3;
+  margin-right: 0.5em;
+}
+
+#backToHome:hover {
+  color: #270949;
+  cursor: pointer;
+}

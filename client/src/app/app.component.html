@@ -3,8 +3,8 @@
     <div class="col-8">
       <div class="stick">
         <div class="row" class="centered">
-          <img *ngIf="!smallScreen" src="../assets/FreeTalkLogo.png" id="homeLogo">
-          <img *ngIf="smallScreen" src="../assets/FreeTalkMobileLogo.png" id="homeLogoMobile">
+          <a routerLink="/home"><img *ngIf="!smallScreen" src="../assets/FreeTalkLogo.png" id="homeLogo"></a>
+          <a routerLink="/home"><img *ngIf="smallScreen" src="../assets/FreeTalkMobileLogo.png" id="homeLogoMobile"></a>
         </div>
         <div class="row" id="border">
           <div class="col-3"></div>
@@ -19,14 +19,13 @@
       </div>
       <div class="row">
         <div class="col">
-<!--          <app-home [title]="title" [posts]="posts"></app-home>-->
           <router-outlet></router-outlet>
         </div>
       </div>
     </div>
     <div class="col-4" id="rightBar">
       <div class="rightStick">
-        <input type="text" placeholder="Search FreeTalk" class="form-control rounded" id="searchBar" (keyup.enter)="getPosts()" [(ngModel)]="search">
+        <input type="text" placeholder="Search FreeTalk" class="form-control rounded" id="searchBar" (keyup.enter)="searchPosts()" [(ngModel)]="search">
         <app-hashtags></app-hashtags>
       </div>
     </div>

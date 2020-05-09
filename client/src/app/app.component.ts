@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from './services/posts.service';
 import { HashtagsService } from "./services/hashtags.service";
+import { Router } from "@angular/router";
 // @ts-ignore
 import { animals } from '../assets/animals.json';
-import {Post} from "./models/Post";
+import { Post } from "./models/Post";
 
 @Component({
   selector: 'app-root',
@@ -17,21 +18,23 @@ export class AppComponent {
   content:string = "";
   hashtags:string[] = [];
   search:string = "";
-  posts:Post[] = [];
 
-  constructor(private postsService:PostsService, private hashtagsService:HashtagsService) {
+  constructor(private postsService:PostsService, private hashtagsService:HashtagsService, private router:Router) {
   }
 
   ngOnInit():void {
     if(window.screen.width < 768){
       this.smallScreen = true;
     }
-    this.getPosts();
   }
 
   resetContentAndHashTags() {
     this.content = "";
     this.hashtags = [];
+  }
+
+  searchPosts() {
+    this.router.navigateByUrl("/search?search=" + this.search);
   }
 
   getHashtagsFromContent(content:string) {
@@ -43,16 +46,6 @@ export class AppComponent {
     });
   }
 
-  getPosts() {
-    let dummySearch = this.search;
-    if(this.search.charAt(0) == '#'){
-      dummySearch = "%23" + this.search.substr(1, this.search.length);
-    }
-    this.postsService.getPosts(dummySearch).subscribe(resp => {
-      this.posts = resp;
-    });
-  }
-
   addPost(){
     this.getHashtagsFromContent(this.content);
     this.hashtags.forEach(hashtag => {
@@ -60,7 +53,7 @@ export class AppComponent {
     })
     this.postsService.addPost("Anonymous " + animals[Math.floor(Math.random() * animals.length)], this.content, this.hashtags).subscribe();
     this.resetContentAndHashTags();
-    this.getPosts();
+    //need to refetch posts
   }
 
 }

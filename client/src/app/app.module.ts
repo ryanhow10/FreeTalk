@@ -10,6 +10,8 @@ import { HashtagComponent } from './components/hashtag/hashtag.component';
 import { HomeComponent } from "./components/home/home.component";
 import { PostComponent } from './components/post/post.component';
 import { InteractComponent } from './components/interact/interact.component';
+import { SearchComponent } from './components/search/search.component';
+import { HashtagPostsComponent } from './components/hashtag-posts/hashtag-posts.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { InteractComponent } from './components/interact/interact.component';
     HashtagComponent,
     HomeComponent,
     PostComponent,
-    InteractComponent
+    InteractComponent,
+    SearchComponent,
+    HashtagPostsComponent
   ],
   imports: [
     BrowserModule,
