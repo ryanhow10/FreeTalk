@@ -12,6 +12,7 @@ import { PostComponent } from './components/post/post.component';
 import { InteractComponent } from './components/interact/interact.component';
 import { SearchComponent } from './components/search/search.component';
 import { HashtagPostsComponent } from './components/hashtag-posts/hashtag-posts.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HashtagPostsComponent } from './components/hashtag-posts/hashtag-posts.
     PostComponent,
     InteractComponent,
     SearchComponent,
-    HashtagPostsComponent
+    HashtagPostsComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

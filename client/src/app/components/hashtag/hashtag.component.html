@@ -1,4 +1,4 @@
 <div id="hashtag">
-  <a routerLink="/hashtags/{{ hashtag }}"><h5 id="name">#{{ hashtag }}</h5></a>
+  <a [routerLink]="['/hashtags', hashtag]"><h5 id="name">#{{ hashtag }}</h5></a>
   <p>{{ count }} posts</p>
 </div>

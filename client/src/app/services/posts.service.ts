@@ -22,6 +22,10 @@ export class PostsService {
     }
   }
 
+  getPostsByHashtag(hashtag:string):Observable<Post[]> {
+    return this.http.get<Post[]>(this.url + "/hashtags/" + hashtag);
+  }
+
   addPost(username:string, content:string, hashtags:string[]):Observable<Post> {
     return this.http.post<Post>(this.url, {
       "username": username,
