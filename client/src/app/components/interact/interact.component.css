@@ -8,10 +8,12 @@
 }
 
 .edit:hover {
+  cursor: pointer;
   color: #4654A3;
 }
 
 #interact {
   display: inline-block;
 }
+
 
