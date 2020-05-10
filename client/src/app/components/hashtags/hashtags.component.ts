@@ -13,7 +13,7 @@ export class HashtagsComponent implements OnInit {
   constructor(private hashtagService:HashtagsService) { }
 
   ngOnInit(): void {
-    this.getTopHashtags()
+    this.getTopHashtags();
   }
 
   getTopHashtags() {

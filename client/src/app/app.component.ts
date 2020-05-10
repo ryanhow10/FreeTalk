@@ -53,7 +53,6 @@ export class AppComponent {
     })
     this.postsService.addPost("Anonymous " + animals[Math.floor(Math.random() * animals.length)], this.content, this.hashtags).subscribe();
     this.resetContentAndHashTags();
-    //need to refetch posts
   }
 
 }

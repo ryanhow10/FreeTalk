@@ -13,4 +13,6 @@ public interface PostRepository extends MongoRepository<Post, MongoId> {
     Post findFirstByPostId(String postId);
 
     List<Post> findPostsByHashtagsContains(String hashtag);
+
+    void deletePostByPostId(String postId);
 }

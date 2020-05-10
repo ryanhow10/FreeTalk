@@ -15,12 +15,19 @@ export class HashtagPostsComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute, private postsService:PostsService) { }
 
   ngOnInit(): void {
+    this.postsService.refreshHashtagPosts.subscribe(() => {
+      this.getPosts();
+    });
+    this.getPosts();
+  }
+
+  getPosts() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.hashtag = paramMap["params"]["hashtag"];
     });
     this.postsService.getPostsByHashtag(this.hashtag).subscribe(resp => {
       this.posts = resp;
-    })
+    });
   }
 
 }

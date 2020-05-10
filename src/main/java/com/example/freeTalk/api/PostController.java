@@ -46,11 +46,12 @@ public class PostController {
     @PutMapping(path = "{postId}")
     public void updatePost(@PathVariable("postId") String postId, @Valid @NonNull @RequestBody Post newPost){
         Post post = this.postRepository.findFirstByPostId(postId);
-        if(newPost.getReports() >= 3){
-            this.postRepository.delete(post);
-        } else {
-            post = new Post(post.getPostId(), post.getUsername(), post.getContent(), post.getHashtags(), newPost.getLikes(), newPost.getDislikes(), newPost.getDislikes(), post.getCreatedOn());
-            this.postRepository.save(post);
-        }
+        post = new Post(post.getPostId(), post.getUsername(), post.getContent(), post.getHashtags(), newPost.getLikes(), newPost.getDislikes(), newPost.getDislikes(), post.getCreatedOn());
+        this.postRepository.save(post);
+    }
+
+    @DeleteMapping(path = "/{postId}")
+    public void deletePost(@PathVariable("postId") String postId) {
+        this.postRepository.deletePostByPostId(postId);
     }
 }

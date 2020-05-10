@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Router } from "@angular/router";
+import { PostsService } from "../../services/posts.service";
 
 @Component({
   selector: 'app-hashtag',
@@ -10,9 +12,14 @@ export class HashtagComponent implements OnInit {
   @Input() hashtag:string;
   @Input() count:number;
 
-  constructor() { }
+  constructor(private router: Router, private postsService:PostsService) { }
 
   ngOnInit(): void {
+  }
+
+  changeHashtag(hashtag:string) {
+    this.postsService.refreshHashtagPosts.next();
+    this.router.navigateByUrl("/hashtags/" + hashtag);
   }
 
 }
