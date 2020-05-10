@@ -13,6 +13,13 @@ export class HomeComponent implements OnInit {
   constructor(private postsService:PostsService) { }
 
   ngOnInit(): void {
+    this.postsService.refreshPosts.subscribe(() => {
+      this.getPosts();
+    });
+    this.getPosts();
+  }
+
+  getPosts() {
     this.postsService.getPosts("").subscribe(resp => {
       this.posts = resp;
     });

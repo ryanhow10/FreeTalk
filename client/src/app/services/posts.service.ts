@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Post } from '../models/Post';
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
+import {tap} from "rxjs/operators";
 
 class List<T> {
 }
@@ -11,6 +12,7 @@ class List<T> {
 })
 export class PostsService {
   url:string = "http://localhost:8080/posts";
+  refreshPosts = new Subject<void>();
 
   constructor(private http:HttpClient) { }
 
@@ -31,7 +33,11 @@ export class PostsService {
       "username": username,
       "content": content,
       "hashtags": hashtags,
-    });
+    }).pipe(
+      tap(() => {
+        this.refreshPosts.next();
+      })
+    );
   }
 
   updatePost(post:Post):Observable<Post> {

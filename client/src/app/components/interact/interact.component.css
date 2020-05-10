@@ -4,7 +4,7 @@
 
 .edit {
   color: #A0A0A0;
-  margin: 1em;
+  margin: 0.3em;
 }
 
 .edit:hover {
@@ -12,8 +12,11 @@
   color: #4654A3;
 }
 
-#interact {
-  display: inline-block;
+#count {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  padding-left: 0.25em;
 }
+
+
 
 
