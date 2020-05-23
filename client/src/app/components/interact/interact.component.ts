@@ -27,6 +27,11 @@ export class InteractComponent implements OnInit {
 
   addReport() {
     this.post.reports++;
+    if(this.post.reports >= 3){
+      this.postsService.deletePost(this.post.postId).subscribe();
+      //decrement hashtags
+      //refresh hashtags and posts
+    }
     this.postsService.updatePost(this.post).subscribe();
   }
 }

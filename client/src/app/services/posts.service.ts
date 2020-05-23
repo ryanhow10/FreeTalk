@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Post } from '../models/Post';
-import { Observable, Subject } from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
 import { tap } from "rxjs/operators";
 
 class List<T> {
@@ -14,6 +14,9 @@ export class PostsService {
   url:string = "http://localhost:8080/posts";
   refreshPosts = new Subject<void>();
   refreshHashtagPosts = new Subject<void>();
+
+  //today
+  newSearch = new BehaviorSubject<string>('default');
 
   constructor(private http:HttpClient) { }
 
@@ -50,5 +53,9 @@ export class PostsService {
       "dislikes": post.dislikes,
       "reports": post.reports
     });
+  }
+
+  deletePost(postId:string):Observable<Post> {
+    return this.http.delete<Post>(this.url + "/" + postId);
   }
 }

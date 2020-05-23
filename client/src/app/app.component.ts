@@ -13,7 +13,6 @@ import { Post } from "./models/Post";
 })
 
 export class AppComponent {
-  title:string = "Home";
   smallScreen:boolean = false;
   content:string = "";
   hashtags:string[] = [];
@@ -34,6 +33,7 @@ export class AppComponent {
   }
 
   searchPosts() {
+    this.postsService.newSearch.next(this.search);
     this.router.navigateByUrl("/search?search=" + this.search);
   }
 

@@ -16,13 +16,14 @@ export class SearchComponent implements OnInit {
   constructor(private activatedRoute:ActivatedRoute, private postsService:PostsService) { }
 
   ngOnInit(): void {
-    this.postsService.refreshPosts.subscribe(() => {
-      this.getPosts();
+    this.postsService.newSearch.subscribe((search) => {
+      this.getPosts(search);
     });
-    this.getPosts();
+    this.setSearchParam()
+    this.getPosts(this.searchParam);
   }
 
-  getPosts() {
+  setSearchParam() {
     this.activatedRoute.queryParams.subscribe(params => {
       this.searchParam = params["search"];
       this.search = params["search"];
@@ -30,7 +31,10 @@ export class SearchComponent implements OnInit {
         this.searchParam = "%23" + this.searchParam.substr(1, this.searchParam.length);
       }
     });
-    this.postsService.getPosts(this.searchParam).subscribe(resp => {
+  }
+
+  getPosts(param: string) {
+    this.postsService.getPosts(param).subscribe(resp => {
       this.posts = resp;
     });
   }
