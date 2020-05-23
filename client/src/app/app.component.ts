@@ -35,6 +35,7 @@ export class AppComponent {
   searchPosts() {
     this.postsService.newSearch.next(this.search);
     this.router.navigateByUrl("/search?search=" + this.search);
+    this.search = "";
   }
 
   getHashtagsFromContent(content:string) {

@@ -13,9 +13,7 @@ class List<T> {
 export class PostsService {
   url:string = "http://localhost:8080/posts";
   refreshPosts = new Subject<void>();
-  refreshHashtagPosts = new Subject<void>();
-
-  //today
+  refreshHashtagPosts = new BehaviorSubject<string>('default');
   newSearch = new BehaviorSubject<string>('default');
 
   constructor(private http:HttpClient) { }

@@ -18,7 +18,7 @@ export class HashtagComponent implements OnInit {
   }
 
   changeHashtag(hashtag:string) {
-    this.postsService.refreshHashtagPosts.next();
+    this.postsService.refreshHashtagPosts.next(hashtag);
     this.router.navigateByUrl("/hashtags/" + hashtag);
   }
 
