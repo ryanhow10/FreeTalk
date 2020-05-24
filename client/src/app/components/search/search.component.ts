@@ -17,9 +17,10 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.postsService.newSearch.subscribe((search) => {
+      this.search = search;
       this.getPosts(search);
     });
-    this.setSearchParam()
+    this.setSearchParam();
     this.getPosts(this.searchParam);
   }
 
@@ -27,9 +28,6 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       this.searchParam = params["search"];
       this.search = params["search"];
-      if(this.searchParam.charAt(0) == '#'){
-        this.searchParam = "%23" + this.searchParam.substr(1, this.searchParam.length);
-      }
     });
   }
 

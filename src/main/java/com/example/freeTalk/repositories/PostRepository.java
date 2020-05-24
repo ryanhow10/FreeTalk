@@ -12,7 +12,7 @@ public interface PostRepository extends MongoRepository<Post, MongoId> {
 
     Post findFirstByPostId(String postId);
 
-    List<Post> findPostsByHashtagsContains(String hashtag);
+    List<Post> findPostsByHashtagsContainsOrderByCreatedOnDesc(String hashtag);
 
     void deletePostByPostId(String postId);
 }

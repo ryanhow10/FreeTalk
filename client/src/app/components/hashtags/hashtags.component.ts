@@ -13,6 +13,9 @@ export class HashtagsComponent implements OnInit {
   constructor(private hashtagService:HashtagsService) { }
 
   ngOnInit(): void {
+    this.hashtagService.updateHashtags.subscribe(() => {
+      this.getTopHashtags();
+    })
     this.getTopHashtags();
   }
 

@@ -7,7 +7,8 @@ import { Observable, Subject } from "rxjs";
   providedIn: 'root'
 })
 export class HashtagsService {
-  url:string = "http://localhost:8080/hashtags"
+  url:string = "http://localhost:8080/hashtags";
+  updateHashtags = new Subject();
 
   constructor(private http:HttpClient) { }
 

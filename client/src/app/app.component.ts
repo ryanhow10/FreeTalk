@@ -4,7 +4,6 @@ import { HashtagsService } from "./services/hashtags.service";
 import { Router } from "@angular/router";
 // @ts-ignore
 import { animals } from '../assets/animals.json';
-import { Post } from "./models/Post";
 
 @Component({
   selector: 'app-root',
@@ -32,19 +31,41 @@ export class AppComponent {
     this.hashtags = [];
   }
 
+  isHashtag(content: string): boolean {
+    if(content.charAt(0) === '#'){
+      return true;
+    }
+    return false;
+  }
+
+  removeHashtag(content: string): string {
+    return content.substr(1, content.length)
+  }
+
   searchPosts() {
-    this.postsService.newSearch.next(this.search);
-    this.router.navigateByUrl("/search?search=" + this.search);
+    if(this.isHashtag(this.search)) {
+      let hashtag = this.removeHashtag(this.search);
+      this.postsService.refreshHashtagPosts.next(hashtag);
+      this.router.navigateByUrl("/hashtags/" + hashtag);
+    } else {
+      this.postsService.newSearch.next(this.search);
+      this.router.navigateByUrl("/search?search=" + this.search);
+    }
     this.search = "";
   }
 
   getHashtagsFromContent(content:string) {
     let words = content.split(" ");
     words.forEach(word => {
-      if(word.charAt(0) === '#'){
-        this.hashtags.push(word.substr(1, word.length));
+      if(this.isHashtag(word)){
+        let hashtag = this.removeHashtag(word);
+        this.hashtags.push(hashtag);
       }
     });
+  }
+
+  generateUsername() {
+    return "Anonymous " + animals[Math.floor(Math.random() * animals.length)];
   }
 
   addPost(){
@@ -52,7 +73,9 @@ export class AppComponent {
     this.hashtags.forEach(hashtag => {
       this.hashtagsService.addHashtag(hashtag).subscribe();
     })
-    this.postsService.addPost("Anonymous " + animals[Math.floor(Math.random() * animals.length)], this.content, this.hashtags).subscribe();
+    this.postsService.addPost(this.generateUsername(), this.content, this.hashtags).subscribe(() => {
+      this.hashtagsService.updateHashtags.next();
+    });
     this.resetContentAndHashTags();
   }
 

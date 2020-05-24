@@ -33,7 +33,7 @@ public class PostController {
     //GET /posts/hashtags/:hashtag
     @GetMapping(path = "/hashtags/{hashtag}")
     public List<Post> getPostsByHashtag(@PathVariable("hashtag") String hashtag) {
-        return this.postRepository.findPostsByHashtagsContains(hashtag);
+        return this.postRepository.findPostsByHashtagsContainsOrderByCreatedOnDesc(hashtag);
     }
 
     //POST /posts
