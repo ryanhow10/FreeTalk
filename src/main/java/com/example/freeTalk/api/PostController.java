@@ -20,7 +20,6 @@ public class PostController {
         this.postRepository = postRepository;
     }
 
-    //GET /posts
     @GetMapping
     public List<Post> getPosts(@RequestParam(required = false) String search){
         if(search == null || search.length() == 0){
@@ -30,19 +29,16 @@ public class PostController {
         }
     }
 
-    //GET /posts/hashtags/:hashtag
     @GetMapping(path = "/hashtags/{hashtag}")
     public List<Post> getPostsByHashtag(@PathVariable("hashtag") String hashtag) {
         return this.postRepository.findPostsByHashtagsContainsOrderByCreatedOnDesc(hashtag);
     }
 
-    //POST /posts
     @PostMapping
     public void addPost(@Valid @NonNull @RequestBody Post post) {
         this.postRepository.insert(new Post(UUID.randomUUID().toString(), post.getUsername(), post.getContent(), post.getHashtags(), 0, 0, 0, new Date()));
     }
 
-    //PUT /posts/:postId
     @PutMapping(path = "{postId}")
     public void updatePost(@PathVariable("postId") String postId, @Valid @NonNull @RequestBody Post newPost){
         Post post = this.postRepository.findFirstByPostId(postId);

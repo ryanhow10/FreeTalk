@@ -18,13 +18,11 @@ public class HashtagController {
         this.hashtagRepository = hashtagRepository;
     }
 
-    //GET /hashtags
     @GetMapping
     public List<Hashtag> getHashtags() {
         return this.hashtagRepository.findAllByOrderByCountDesc();
     }
 
-    //POST /hashtags
     @PostMapping
     public void addHashtag(@Valid @NonNull @RequestBody Hashtag newHashtag) {
         Hashtag hashtag = this.hashtagRepository.findHashtagByName(newHashtag.getName());
@@ -32,6 +30,17 @@ public class HashtagController {
             this.hashtagRepository.insert(new Hashtag(UUID.randomUUID().toString(), newHashtag.getName(), 1));
         } else{
             hashtag = new Hashtag(hashtag.getHashtagId(), hashtag.getName(), hashtag.getCount() + 1);
+            this.hashtagRepository.save(hashtag);
+        }
+    }
+
+    @PutMapping(path = "/{name}")
+    public void updateHashtag(@PathVariable("name") String name) {
+        Hashtag hashtag = this.hashtagRepository.findHashtagByName(name);
+        if(hashtag.getCount() == 1){
+            this.hashtagRepository.delete(hashtag);
+        } else {
+            hashtag = new Hashtag(hashtag.getHashtagId(), hashtag.getName(), hashtag.getCount() - 1);
             this.hashtagRepository.save(hashtag);
         }
     }

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Post } from '../../models/Post'
 import { PostsService } from "../../services/posts.service";
+import {HashtagsService} from "../../services/hashtags.service";
 
 @Component({
   selector: 'app-interact',
@@ -10,7 +11,7 @@ import { PostsService } from "../../services/posts.service";
 export class InteractComponent implements OnInit {
   @Input() post:Post;
 
-  constructor(private postsService:PostsService) { }
+  constructor(private postsService:PostsService, private hashtagsService: HashtagsService) { }
 
   ngOnInit(): void {
   }
@@ -28,10 +29,15 @@ export class InteractComponent implements OnInit {
   addReport() {
     this.post.reports++;
     if(this.post.reports >= 3){
-      this.postsService.deletePost(this.post.postId).subscribe();
-      //decrement hashtags
-      //refresh hashtags and posts
+      this.post.hashtags.forEach(hashtag => {
+        this.hashtagsService.decrementHashtagCount(hashtag).subscribe();
+      });
+      this.postsService.deletePost(this.post.postId).subscribe(() => {
+        this.postsService.refreshPosts.next();
+        this.hashtagsService.updateHashtags.next();
+      });
+    } else {
+      this.postsService.updatePost(this.post).subscribe();
     }
-    this.postsService.updatePost(this.post).subscribe();
   }
 }

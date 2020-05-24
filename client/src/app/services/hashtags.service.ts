@@ -21,4 +21,8 @@ export class HashtagsService {
       "name": name
     });
   }
+
+  decrementHashtagCount(name: string) {
+    return this.http.put(this.url + '/' + name, {});
+  }
 }
