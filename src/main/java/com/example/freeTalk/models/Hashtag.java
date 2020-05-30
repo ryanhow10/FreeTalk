@@ -7,11 +7,11 @@ import javax.validation.constraints.NotBlank;
 public class Hashtag {
 
     @Id
-    private final String hashtagId;
+    private String hashtagId;
 
     @NotBlank
-    private final String name;
-    private final int count;
+    private String name;
+    private int count;
 
     public Hashtag(String hashtagId, String name, int count) {
         this.hashtagId = hashtagId;
@@ -28,5 +28,17 @@ public class Hashtag {
 
     public int getCount() {
         return count;
+    }
+
+    public void setHashtagId(String hashtagId) {
+        this.hashtagId = hashtagId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

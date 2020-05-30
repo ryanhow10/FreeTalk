@@ -10,21 +10,21 @@ import java.util.UUID;
 public class Post {
 
     @Id
-    private final String postId;
+    private String postId;
 
     @NotBlank
-    private final String username;
+    private String username;
 
     @NotBlank
-    private final String content;
+    private String content;
 
     @NotNull
-    private final String[] hashtags;
+    private String[] hashtags;
 
-    private final int likes;
-    private final int dislikes;
-    private final int reports;
-    private final Date createdOn;
+    private int likes;
+    private int dislikes;
+    private int reports;
+    private Date createdOn;
 
     public Post(String postId, String username, String content, String[] hashtags, int likes, int dislikes, int reports, Date createdOn) {
         this.postId = postId;
@@ -67,5 +67,37 @@ public class Post {
 
     public Date getCreatedOn() {
         return createdOn;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setHashtags(String[] hashtags) {
+        this.hashtags = hashtags;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    public void setReports(int reports) {
+        this.reports = reports;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
     }
 }

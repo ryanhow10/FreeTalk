@@ -1,6 +1,7 @@
 package com.example.freeTalk.api;
 import com.example.freeTalk.models.Post;
 import com.example.freeTalk.repositories.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class PostController {
 
     private final PostRepository postRepository;
 
+    @Autowired
     public PostController(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
@@ -25,7 +27,7 @@ public class PostController {
         if(search == null || search.length() == 0){
             return this.postRepository.findAll(Sort.by(Sort.Direction.DESC, "createdOn"));
         } else {
-            return this.postRepository.findPostsByContentContains(search);
+            return this.postRepository.findPostsByContentContainsOrderByCreatedOnDesc(search);
         }
     }
 

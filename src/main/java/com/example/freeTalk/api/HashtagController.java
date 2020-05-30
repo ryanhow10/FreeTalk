@@ -1,6 +1,7 @@
 package com.example.freeTalk.api;
 import com.example.freeTalk.models.Hashtag;
 import com.example.freeTalk.repositories.HashtagRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -14,6 +15,7 @@ public class HashtagController {
 
     private final HashtagRepository hashtagRepository;
 
+    @Autowired
     public HashtagController(HashtagRepository hashtagRepository) {
         this.hashtagRepository = hashtagRepository;
     }
@@ -29,7 +31,7 @@ public class HashtagController {
         if(hashtag == null) {
             this.hashtagRepository.insert(new Hashtag(UUID.randomUUID().toString(), newHashtag.getName(), 1));
         } else{
-            hashtag = new Hashtag(hashtag.getHashtagId(), hashtag.getName(), hashtag.getCount() + 1);
+            hashtag.setCount(hashtag.getCount() + 1);
             this.hashtagRepository.save(hashtag);
         }
     }
