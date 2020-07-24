@@ -37,12 +37,12 @@ public class HashtagController {
     }
 
     @PutMapping(path = "/{name}")
-    public void updateHashtag(@PathVariable("name") String name) {
+    public void decrementHashtagCount(@PathVariable("name") String name) {
         Hashtag hashtag = this.hashtagRepository.findHashtagByName(name);
         if(hashtag.getCount() == 1){
             this.hashtagRepository.delete(hashtag);
         } else {
-            hashtag = new Hashtag(hashtag.getHashtagId(), hashtag.getName(), hashtag.getCount() - 1);
+            hashtag.setCount(hashtag.getCount() - 1);
             this.hashtagRepository.save(hashtag);
         }
     }

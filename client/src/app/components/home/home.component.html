@@ -1,6 +1,6 @@
 <div id="results">
   <h4 id="title">Home</h4>
-  <p *ngIf="!posts || posts.length == 0">No results found</p>
+  <p *ngIf="!posts || posts.length == 0" class="center">No results found</p>
   <div class="row-fluid" *ngFor="let post of posts">
     <app-post [post]="post"></app-post>
   </div>

@@ -44,7 +44,9 @@ public class PostController {
     @PutMapping(path = "{postId}")
     public void updatePost(@PathVariable("postId") String postId, @Valid @NonNull @RequestBody Post newPost){
         Post post = this.postRepository.findFirstByPostId(postId);
-        post = new Post(post.getPostId(), post.getUsername(), post.getContent(), post.getHashtags(), newPost.getLikes(), newPost.getDislikes(), newPost.getDislikes(), post.getCreatedOn());
+        post.setLikes(newPost.getLikes());
+        post.setDislikes(newPost.getDislikes());
+        post.setReports(newPost.getReports());
         this.postRepository.save(post);
     }
 

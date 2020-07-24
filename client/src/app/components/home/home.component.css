@@ -3,4 +3,12 @@
   border-bottom: 0.05em solid #F0F0F0;
 }
 
+#title {
+  border-bottom: 0.05em solid #F0F0F0;
+  padding-bottom: 0.5em;
+  min-width: 100%;
+}
 
+.center {
+  text-align: center;
+}
